@@ -6,11 +6,11 @@ import io.reactivex.Single
 import javax.inject.Inject
 
 class TMDBDataSourceLocal @Inject constructor(): TMDBDataSource {
-    override fun popular(): Single<List<MovieModel>> {
+    override fun popularMovies(): Single<List<MovieModel>> {
         TODO("Not yet implemented")
     }
 
-    override fun topRated(): Single<List<MovieModel>> {
+    override fun topRatedMovies(): Single<List<MovieModel>> {
         TODO("Not yet implemented")
     }
 }

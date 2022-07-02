@@ -4,6 +4,6 @@ import com.marturelo.themoviedbapp.data.model.MovieModel
 import io.reactivex.Single
 
 interface TMDBDataSource {
-    fun popular(): Single<List<MovieModel>>
-    fun topRated(): Single<List<MovieModel>>
+    fun popularMovies(): Single<List<MovieModel>>
+    fun topRatedMovies(): Single<List<MovieModel>>
 }

@@ -1,5 +1,7 @@
 package com.marturelo.themoviedbapp.data.model
 
+import com.marturelo.themoviedbapp.domain.entity.MovieEntity
+
 data class MovieModel(
     val adult: Boolean,
     val backdrop_path: String,
@@ -16,3 +18,22 @@ data class MovieModel(
     val vote_average: Double,
     val vote_count: Int
 )
+
+fun MovieModel.toEntity(): MovieEntity {
+    return MovieEntity(
+        adult,
+        backdrop_path,
+        genre_ids,
+        id,
+        original_language,
+        original_title,
+        overview,
+        popularity,
+        poster_path,
+        release_date,
+        title,
+        video,
+        vote_average,
+        vote_count
+    )
+}

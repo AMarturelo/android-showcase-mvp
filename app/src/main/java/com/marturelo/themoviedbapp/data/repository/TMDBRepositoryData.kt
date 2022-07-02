@@ -3,6 +3,8 @@ package com.marturelo.themoviedbapp.data.repository
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.data.datasource.TMDBDataSource
 import com.marturelo.themoviedbapp.data.model.MovieModel
+import com.marturelo.themoviedbapp.data.model.toEntity
+import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import com.marturelo.themoviedbapp.domain.repository.TMDBRepository
 import io.reactivex.Single
 import javax.inject.Inject
@@ -13,7 +15,7 @@ class TMDBRepositoryData @Inject constructor(
     @Named(Constants.DI.TMBD_DS_LOCAL) local: TMDBDataSource
 ) :
     TMDBRepository {
-    override fun discovery(): Single<List<MovieModel>> {
-        return remote.popular()
+    override fun discovery(): Single<List<MovieEntity>> {
+        return remote.popularMovies().map { list -> list.map { it.toEntity() } }
     }
 }

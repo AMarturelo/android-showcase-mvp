@@ -7,4 +7,14 @@ interface Constants {
         const val HOST = "HOST"
         const val API_KEY = "API_KEY"
     }
+
+    object API {
+        const val ISO_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        const val API_CONNECTION_TIMEOUT = 5L
+
+        const val MOVIE_PATH =
+            "movie/"
+        const val POPULAR_PATH = "popular/"
+        const val TOP_RATED_PATH = "top_rated/"
+    }
 }

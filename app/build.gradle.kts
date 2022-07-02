@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.marturelo.themoviedbapp"
-        minSdkVersion(21)
+        minSdkVersion(23)
         targetSdkVersion(33)
         versionCode = 1
         versionName = "1.1"
@@ -63,5 +63,12 @@ dependencies {
     //rx
     implementation("io.reactivex.rxjava2:rxandroid:2.0.2")
     implementation("io.reactivex.rxjava2:rxjava:2.1.12")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.4.0")
+
+    //okHttp
+    implementation("com.squareup.okhttp3:okhttp:4.2.1")
+    implementation("com.squareup.retrofit2:retrofit:2.4.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.4.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
 
 }

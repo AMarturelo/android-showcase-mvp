@@ -1,5 +1,6 @@
 package com.marturelo.themoviedbapp.presentation.dashboard
 
+import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
 import com.marturelo.themoviedbapp.presentation.core.AbstractPresenter
 import javax.inject.Inject
@@ -17,7 +18,7 @@ class DashboardPresenter @Inject constructor(
         discoveryMoviesUseCase.execute(::onResult, ::onError)
     }
 
-    fun onResult(resutl: String) {
+    fun onResult(resutl: List<MovieEntity>) {
 
     }
 

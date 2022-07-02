@@ -10,12 +10,12 @@ import dagger.Provides
 class DashboardModule {
 
     @Provides
-    fun provideDashboardFactoringPresenter(presenter: DashboardPresenter): DashboardContract.Presenter {
+    fun provideDashboardPresenter(presenter: DashboardPresenter): DashboardContract.Presenter {
         return presenter
     }
 
     @Provides
-    fun provideDashboardFactoringNavigator(navigator: DashboardNavigator): DashboardContract.Navigator {
+    fun provideDashboardNavigator(navigator: DashboardNavigator): DashboardContract.Navigator {
         return navigator
     }
 }
