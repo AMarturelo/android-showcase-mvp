@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginTop="@dimen/dp12"
-        android:layout_marginEnd="@dimen/dp12"
+        android:layout_marginEnd="@dimen/dp30"
         android:maxLines="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ivPoster"
@@ -52,5 +52,50 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/tvTitleOverviews"
+        style="@style/TextAppearance.MediumText.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp18"
+        android:text="@string/title_overviews"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPoster" />
+
+    <TextView
+        android:id="@+id/tvOverviews"
+        style="@style/TextAppearance.RegularText.White"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginEnd="@dimen/dp30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleOverviews"
+        tools:text="Button" />
+
+    <TextView
+        android:id="@+id/tvTitleReleaseDate"
+        style="@style/TextAppearance.MediumText.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp12"
+        android:text="@string/title_release_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOverviews" />
+
+    <TextView
+        android:id="@+id/tvMovieReleaseDate"
+        style="@style/TextAppearance.RegularText.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleReleaseDate"
+        tools:text="TextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

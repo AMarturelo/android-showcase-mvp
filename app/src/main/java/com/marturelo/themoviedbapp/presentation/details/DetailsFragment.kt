@@ -8,13 +8,16 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.marturelo.themoviedbapp.R
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.ext.dp
+import com.marturelo.themoviedbapp.ext.releasedDate
 import com.marturelo.themoviedbapp.presentation.core.BaseDaggerMVPFragment
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 import com.marturelo.themoviedbapp.presentation.details.vo.PayloadVO
 import kotlinx.android.synthetic.main.fragment_details.btBack
 import kotlinx.android.synthetic.main.fragment_details.ivBackdrop
 import kotlinx.android.synthetic.main.fragment_details.ivPoster
+import kotlinx.android.synthetic.main.fragment_details.tvMovieReleaseDate
 import kotlinx.android.synthetic.main.fragment_details.tvMovieTitle
+import kotlinx.android.synthetic.main.fragment_details.tvOverviews
 
 class DetailsFragment :
     BaseDaggerMVPFragment<DetailsContract.View, DetailsContract.Presenter>(),
@@ -68,17 +71,7 @@ class DetailsFragment :
             .into(ivPoster)
 
         tvMovieTitle.text = payload.movie.title
-    }
-
-    override fun showLoadingState() {
-    }
-
-    override fun showContentState() {
-    }
-
-    override fun showErrorState() {
-    }
-
-    override fun showError(error: Throwable) {
+        tvOverviews.text = payload.movie.overview
+        tvMovieReleaseDate.text = payload.movie.release_date.releasedDate()
     }
 }

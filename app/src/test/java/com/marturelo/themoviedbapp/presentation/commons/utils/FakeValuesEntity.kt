@@ -1,4 +1,4 @@
-package com.marturelo.themoviedbapp.presentation.dashboard.commons.utils
+package com.marturelo.themoviedbapp.presentation.commons.utils
 
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import java.util.*

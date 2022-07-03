@@ -1,6 +1,6 @@
 package com.marturelo.themoviedbapp.presentation.details
 
-import com.marturelo.themoviedbapp.presentation.dashboard.commons.utils.FakeValuesEntity
+import com.marturelo.themoviedbapp.presentation.commons.utils.FakeValuesEntity
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.toVO
 import com.marturelo.themoviedbapp.presentation.details.vo.PayloadVO
 import io.mockk.MockKAnnotations
@@ -40,7 +40,7 @@ class DetailsPresenterTest {
 
     @Test
     fun given_presenter_whenRestoreFromPayload_then_VerifyCallbacks() {
-        presenter.initWithPayload(PayloadVO(FakeValuesEntity.movie().toVO()))
+        presenter.restoreFromPayload(PayloadVO(FakeValuesEntity.movie().toVO()))
         verify { presenter.notifyDataChange() }
     }
 
@@ -52,5 +52,20 @@ class DetailsPresenterTest {
 
         presenter.restore()
         verify { presenter.notifyDataChange() }
+    }
+
+    @Test
+    fun given_presenter_whenOnBackClicked_then_VerifyCallbacks() {
+        presenter.onBackClicked()
+        verify { navigator.navigateToBack() }
+    }
+
+    @Test
+    fun given_presenter_whenNotifyDataChange_then_VerifyCallbacks() {
+        every { presenter.payload } returns PayloadVO(
+            movie = FakeValuesEntity.movie().toVO()
+        )
+        presenter.notifyDataChange()
+        verify { view.updateUI(any()) }
     }
 }

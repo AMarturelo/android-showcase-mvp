@@ -6,10 +6,6 @@ import com.marturelo.themoviedbapp.presentation.details.vo.PayloadVO
 interface DetailsContract {
     interface View : MVPContract.BaseView {
         fun updateUI(payload: PayloadVO)
-        fun showLoadingState()
-        fun showContentState()
-        fun showErrorState()
-        fun showError(error: Throwable)
     }
 
     interface Presenter : MVPContract.BasePresenter<View?> {

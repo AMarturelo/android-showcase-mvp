@@ -3,11 +3,10 @@ package com.marturelo.themoviedbapp.presentation.dashboard
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
-import com.marturelo.themoviedbapp.presentation.dashboard.commons.utils.FakeValuesEntity
+import com.marturelo.themoviedbapp.presentation.commons.utils.FakeValuesEntity
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.toVO
-import com.nhaarman.mockitokotlin2.capture
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -15,7 +14,6 @@ import io.mockk.slot
 import io.mockk.spyk
 import io.mockk.verify
 import io.reactivex.functions.Consumer
-import java.util.*
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test

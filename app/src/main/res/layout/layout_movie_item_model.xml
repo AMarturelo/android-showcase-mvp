@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp5"
-            android:text="Release Date:" />
+            android:text="@string/title_release_date" />
 
         <TextView
             android:id="@+id/tvMovieReleaseDate"
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp5"
-            android:text="Average Rating:" />
+            android:text="@string/title_average_rating" />
 
         <TextView
             android:id="@+id/tvMovieAverageRating"

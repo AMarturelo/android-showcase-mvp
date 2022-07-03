@@ -14,6 +14,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.marturelo.themoviedbapp.R
 import com.marturelo.themoviedbapp.ext.dp
+import com.marturelo.themoviedbapp.ext.releasedDate
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 
 @EpoxyModelClass
@@ -30,7 +31,7 @@ abstract class MovieItemModel : EpoxyModelWithHolder<MovieItemModel.Holder>() {
     override fun bind(holder: Holder) {
         super.bind(holder)
         holder.tvMovieTitle.text = item.title
-        holder.tvMovieReleaseDate.text = item.release_date.toString()
+        holder.tvMovieReleaseDate.text = item.release_date.releasedDate()
         holder.tvMovieAverageRating.text = item.vote_average.toString()
         Glide.with(holder.root)
             .load(item.posterUrl)

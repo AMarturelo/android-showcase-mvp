@@ -3,6 +3,7 @@
     <item>
         <inset
             android:insetLeft="13dp"
+            android:insetRight="8dp"
             android:drawable="@drawable/ic_arrow_back_fill">
         </inset>
     </item>
