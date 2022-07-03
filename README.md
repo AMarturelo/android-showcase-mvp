@@ -1,3 +1,4 @@
+
 # The Movie DB App
 Este repositorio es una ShowCase para el uso de MVP.
 
@@ -25,8 +26,9 @@ Este repositorio es una ShowCase para el uso de MVP.
 * Manejo de cache de datos para trabajo offline
 
 ## TODO
-* Mejorar las animacione de transicion entra fragmentos
+* Mejorar las animacione de transicion entre fragmentos
 * Aumentar la cobertura del codigo
 * Agregar pruebas de interfaz
 * Agregar reproduccion para video
+  ** Nota: No se encontro un origen de datos. Pero en cualquier caso se utilizaria la previsualizacion de un resproductor externo o el ExoPlayer para embeber la resproduccion
 * Agregar bookmarks
