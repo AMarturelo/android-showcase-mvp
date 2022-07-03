@@ -9,7 +9,6 @@ import kotlinx.android.parcel.Parcelize
 data class MovieVO(
     val adult: Boolean,
     val backdrop_path: String,
-    val genre_ids: List<Int>,
     val id: Int,
     val original_language: String,
     val original_title: String,
@@ -36,7 +35,6 @@ fun MovieEntity.toVO(): MovieVO {
     return MovieVO(
         adult,
         backdrop_path,
-        genre_ids,
         id,
         original_language,
         original_title,

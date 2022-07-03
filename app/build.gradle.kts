@@ -78,6 +78,14 @@ dependencies {
 
     //Glide
     implementation("com.github.bumptech.glide:glide:4.13.2")
-    annotationProcessor("com.github.bumptech.glide:compiler:4.13.2")
+    kapt("com.github.bumptech.glide:compiler:4.13.2")
+
+    //room
+    implementation("androidx.room:room-runtime:2.2.5")
+    kapt("androidx.room:room-compiler:2.2.5")
+    implementation("androidx.room:room-ktx:2.2.5")
+    implementation("androidx.room:room-rxjava2:2.2.5")
+    implementation("android.arch.persistence.room:runtime:1.1.1")
+    kapt("android.arch.persistence.room:compiler:1.1.1")
 
 }

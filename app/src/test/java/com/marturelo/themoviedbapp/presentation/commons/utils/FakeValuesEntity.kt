@@ -6,7 +6,7 @@ import java.util.*
 object FakeValuesEntity {
     fun movie(): MovieEntity {
         return MovieEntity(
-            false, "Fake", listOf(), (1000..4000).random(), "Fake", "Fake", "Fake", 5.0, "Fake",
+            false, "Fake", (1000..4000).random(), "Fake", "Fake", "Fake", 5.0, "Fake",
             Date(),
             "Fake",
             true,

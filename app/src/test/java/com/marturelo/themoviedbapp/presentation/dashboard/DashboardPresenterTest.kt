@@ -2,6 +2,7 @@ package com.marturelo.themoviedbapp.presentation.dashboard
 
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
+import com.marturelo.themoviedbapp.domain.entity.SourceResultEntity
 import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
 import com.marturelo.themoviedbapp.presentation.commons.utils.FakeValuesEntity
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
@@ -57,7 +58,7 @@ class DashboardPresenterTest {
         verify { presenter.notifyDataChange() }
 
         val paramsArgument = slot<DiscoveryMoviesUseCase.Params>()
-        val resultArgument = slot<Consumer<List<MovieEntity>>>()
+        val resultArgument = slot<Consumer<SourceResultEntity<List<MovieEntity>>>>()
         val errorArgument = slot<Consumer<Throwable>>()
         verify {
             discoveryMoviesUseCase.execute(
@@ -70,6 +71,14 @@ class DashboardPresenterTest {
     }
 
     @Test
+    fun given_presenterInit_whenPopulateWithItems_then_verifyCallbacks() {
+        given_presenter_whenOnResultSuccess_then_verifyCallbacks()
+
+        presenter.populate()
+        Assert.assertEquals(presenter.payload?.contentState, DashboardState.CONTENT)
+    }
+
+    @Test
     fun given_presenter_whenRestoreFromPayload_then_verifyCallbacks() {
         presenter.restoreFromPayload(PayloadVO(discovery = Constants.DISCOVERY.TOP_RARED))
         verify { presenter.notifyDataChange() }
@@ -77,16 +86,40 @@ class DashboardPresenterTest {
     }
 
     @Test
-    fun given_presenter_whenOnResult_then_verifyCallbacks() {
+    fun given_presenter_whenOnResultSuccess_then_verifyCallbacks() {
         presenter.restoreFromPayload(PayloadVO(discovery = Constants.DISCOVERY.TOP_RARED))
 
-        val inputMovies = FakeValuesEntity.movies()
+        val inputMovies = SourceResultEntity(
+            result = FakeValuesEntity.movies(),
+            dataSource = Constants.DataSource.LOCAL,
+            networkStatus = Constants.NetworkStatus.NETWORK_STATUS_SUCCESS
+        )
         presenter.onResult(
             inputMovies
         )
+        verify(exactly = 0) { view.showError(any()) }
         verify { presenter.notifyDataChange() }
         Assert.assertEquals(DashboardState.CONTENT, presenter.payload?.contentState)
-        Assert.assertEquals(inputMovies.map { it.toVO() }, presenter.payload?.items)
+        Assert.assertEquals(inputMovies.result.map { it.toVO() }, presenter.payload?.items)
+    }
+
+    @Test
+    fun given_presenter_whenOnResultLocalSuccessRemoteError_then_verifyCallbacks() {
+        presenter.restoreFromPayload(PayloadVO(discovery = Constants.DISCOVERY.TOP_RARED))
+
+        val inputMovies = SourceResultEntity(
+            result = FakeValuesEntity.movies(),
+            dataSource = Constants.DataSource.LOCAL,
+            error = Exception("Fake"),
+            networkStatus = Constants.NetworkStatus.NETWORK_STATUS_ERROR
+        )
+        presenter.onResult(
+            inputMovies
+        )
+        verify { view.showError(any()) }
+        verify { presenter.notifyDataChange() }
+        Assert.assertEquals(DashboardState.CONTENT, presenter.payload?.contentState)
+        Assert.assertEquals(inputMovies.result.map { it.toVO() }, presenter.payload?.items)
     }
 
     @Test
@@ -102,7 +135,11 @@ class DashboardPresenterTest {
 
     @Test
     fun given_presenter_whenOnErrorWithItems_then_verifyCallbacks() {
-        val inputMovies = FakeValuesEntity.movies()
+        val inputMovies = SourceResultEntity(
+            result = FakeValuesEntity.movies(),
+            dataSource = Constants.DataSource.LOCAL,
+            networkStatus = Constants.NetworkStatus.NETWORK_STATUS_SUCCESS
+        )
         val inputError = Exception("Fake")
 
         presenter.init()

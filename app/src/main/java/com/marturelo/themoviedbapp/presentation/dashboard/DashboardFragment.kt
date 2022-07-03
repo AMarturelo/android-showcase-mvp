@@ -3,6 +3,7 @@ package com.marturelo.themoviedbapp.presentation.dashboard
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.marturelo.themoviedbapp.R
 import com.marturelo.themoviedbapp.commons.utils.Constants
@@ -105,6 +106,7 @@ class DashboardFragment :
     }
 
     override fun showError(error: Throwable) {
+        Toast.makeText(requireContext(), error.message ?: "Remote error", Toast.LENGTH_SHORT).show()
     }
 }
 

@@ -2,6 +2,7 @@ package com.marturelo.themoviedbapp.di.component
 
 import com.marturelo.themoviedbapp.TheMovieDBApp
 import com.marturelo.themoviedbapp.di.module.AppModule
+import com.marturelo.themoviedbapp.di.module.DBModule
 import com.marturelo.themoviedbapp.di.module.DataModule
 import com.marturelo.themoviedbapp.di.module.NetworkModule
 import com.marturelo.themoviedbapp.di.module.ThreadModule
@@ -20,6 +21,7 @@ import javax.inject.Singleton
         ThreadModule::class,
         DataModule::class,
         NetworkModule::class,
+        DBModule::class
     ]
 )
 interface ApplicationComponent : AndroidInjector<TheMovieDBApp> {

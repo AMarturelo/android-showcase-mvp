@@ -3,6 +3,7 @@ package com.marturelo.themoviedbapp.presentation.dashboard
 import androidx.annotation.VisibleForTesting
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
+import com.marturelo.themoviedbapp.domain.entity.SourceResultEntity
 import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
 import com.marturelo.themoviedbapp.presentation.core.AbstractPresenter
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
@@ -48,7 +49,8 @@ class DashboardPresenter @Inject constructor(
     override fun populate() {
         requireNotNull(internalPayLoad)
 
-        internalPayLoad = internalPayLoad?.copy(contentState = DashboardState.LOADING)
+        internalPayLoad =
+            payload?.copy(contentState = if (internalPayLoad?.items?.isEmpty() == true) DashboardState.LOADING else payload?.contentState!!)
         discoveryMoviesUseCase.execute(
             DiscoveryMoviesUseCase.Params(internalPayLoad!!.discovery),
             ::onResult,
@@ -57,12 +59,16 @@ class DashboardPresenter @Inject constructor(
     }
 
     @VisibleForTesting
-    fun onResult(result: List<MovieEntity>) {
+    fun onResult(result: SourceResultEntity<List<MovieEntity>>) {
         requireNotNull(internalPayLoad)
+
+        if (result.isError()) {
+            view?.showError(result.error!!)
+        }
 
         internalPayLoad = internalPayLoad?.copy(
             contentState = DashboardState.CONTENT,
-            items = result.map { it.toVO() })
+            items = result.result.map { it.toVO() })
     }
 
     @VisibleForTesting

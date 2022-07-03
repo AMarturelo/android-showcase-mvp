@@ -33,4 +33,16 @@ interface Constants {
         const val POPULAR = "popular"
         const val TOP_RARED = "top_rated"
     }
+
+    object NetworkStatus {
+        const val NETWORK_STATUS_PURE = 0
+        const val NETWORK_STATUS_SUCCESS = 1
+        const val NETWORK_STATUS_IN_PROCESS = 2
+        const val NETWORK_STATUS_ERROR = 3
+    }
+
+    object DataSource{
+        const val LOCAL = "local"
+        const val REMOTE = "remote"
+    }
 }
