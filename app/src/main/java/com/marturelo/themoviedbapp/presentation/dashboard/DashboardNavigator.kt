@@ -38,4 +38,12 @@ class DashboardNavigator @Inject constructor(
 
 
     }
+
+    override fun navigateToSearch() {
+        val action = DashboardFragmentDirections.actionDashboardFragmentToSearchFragment()
+        NavHostFragment.findNavController(fragment)
+            .navigate(
+                action,
+            )
+    }
 }

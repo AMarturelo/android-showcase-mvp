@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.marturelo.themoviedbapp.data.db.dao.MovieDao
 import com.marturelo.themoviedbapp.data.model.MovieModel
 
-@Database(entities = [MovieModel::class], version = 1, exportSchema = false)
+@Database(entities = [MovieModel::class], version = 2, exportSchema = false)
 abstract class TMDBDatabase : RoomDatabase() {
     abstract fun movieDao(): MovieDao
 }

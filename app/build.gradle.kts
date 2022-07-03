@@ -65,6 +65,12 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.0.2")
     implementation("io.reactivex.rxjava2:rxjava:2.1.12")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.4.0")
+    implementation("com.trello.rxlifecycle3:rxlifecycle:3.1.0")
+    implementation("com.trello.rxlifecycle3:rxlifecycle-android-lifecycle:3.1.0")
+    implementation("com.trello.rxlifecycle3:rxlifecycle-components:3.1.0")
+    implementation("com.trello.rxlifecycle3:rxlifecycle-android:3.1.0")
+    implementation("com.trello.rxlifecycle3:rxlifecycle-kotlin:3.1.0")
+    implementation("com.trello.rxlifecycle3:rxlifecycle-android-lifecycle-kotlin:3.1.0")
 
     //okHttp
     implementation("com.squareup.okhttp3:okhttp:4.2.1")

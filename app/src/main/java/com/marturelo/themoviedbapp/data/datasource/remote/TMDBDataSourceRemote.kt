@@ -15,4 +15,8 @@ class TMDBDataSourceRemote @Inject constructor(
     override fun discover(discovery: String): Single<List<MovieModel>> {
         return api.discoveryMovies(discovery, apiKey).map { it.results }
     }
+
+    override fun search(query: String): Single<List<MovieModel>> {
+        return api.searchMovies(apiKey,query).map { it.results }
+    }
 }

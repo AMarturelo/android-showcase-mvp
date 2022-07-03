@@ -49,6 +49,11 @@
         <item name="fontFamily">@font/poppins_regular</item>
     </style>
 
+    <style name="TextAppearance.SearchHint" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp14</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
     <style name="TextAppearance.MediumText" parent="android:TextAppearance">
         <item name="android:textSize">@dimen/sp12</item>
         <item name="fontFamily">@font/poppins_medium</item>
@@ -59,6 +64,10 @@
     </style>
 
     <style name="TextAppearance.SectionTitle.White">
+        <item name="android:textColor">@color/tmdb_white</item>
+    </style>
+
+    <style name="TextAppearance.SearchHint.White">
         <item name="android:textColor">@color/tmdb_white</item>
     </style>
 

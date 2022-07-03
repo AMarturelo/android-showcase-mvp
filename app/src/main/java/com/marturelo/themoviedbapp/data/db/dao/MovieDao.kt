@@ -17,6 +17,9 @@ interface MovieDao {
     @Query("SELECT * FROM movies")
     fun discovery(): Observable<List<MovieModel>>
 
+    @Query("SELECT * FROM movies WHERE title LIKE '%' || :query || '%'")
+    fun search(query: String): Observable<List<MovieModel>>
+
 
     @Query("SELECT * FROM movies")
     fun getAll(): Observable<List<MovieModel>>

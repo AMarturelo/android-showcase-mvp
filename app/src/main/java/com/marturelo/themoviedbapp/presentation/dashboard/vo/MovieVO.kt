@@ -8,13 +8,13 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class MovieVO(
     val adult: Boolean,
-    val backdrop_path: String,
+    val backdrop_path: String? = null,
     val id: Int,
     val original_language: String,
     val original_title: String,
     val overview: String,
     val popularity: Double,
-    val poster_path: String,
+    val poster_path: String? = null,
     val release_date: Date,
     val title: String,
     val video: Boolean,
@@ -27,7 +27,7 @@ data class MovieVO(
         }
     val backdropUrl: String
         get() {
-            return "https://image.tmdb.org/t/p/w600_and_h900_bestv2/$backdrop_path"
+            return "https://image.tmdb.org/t/p/w600_and_h900_bestv2/${backdrop_path ?: poster_path}"
         }
 }
 

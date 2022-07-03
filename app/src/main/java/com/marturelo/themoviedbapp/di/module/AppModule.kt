@@ -6,6 +6,8 @@ import com.marturelo.themoviedbapp.presentation.dashboard.DashboardFragment
 import com.marturelo.themoviedbapp.presentation.dashboard.di.DashboardModule
 import com.marturelo.themoviedbapp.presentation.details.DetailsFragment
 import com.marturelo.themoviedbapp.presentation.details.di.DetailsModule
+import com.marturelo.themoviedbapp.presentation.search.SearchFragment
+import com.marturelo.themoviedbapp.presentation.search.di.SearchModule
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -23,4 +25,7 @@ abstract class AppModule {
 
     @ContributesAndroidInjector(modules = [DetailsModule::class])
     abstract fun providesDetailsFragment(): DetailsFragment
+
+    @ContributesAndroidInjector(modules = [SearchModule::class])
+    abstract fun providesSearchFragment(): SearchFragment
 }

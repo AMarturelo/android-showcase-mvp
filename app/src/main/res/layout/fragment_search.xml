@@ -2,59 +2,38 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="@dimen/dp29"
-    android:layout_marginEnd="@dimen/dp29"
-    android:background="@color/layout_background"
-    tools:context=".presentation.dashboard.DashboardFragment">
+    android:paddingHorizontal="@dimen/dp30"
+    android:paddingTop="16dp"
+    tools:context=".presentation.search.SearchFragment">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        style="@style/TextAppearance.BigTitle.White"
-        android:layout_width="0dp"
+    <com.marturelo.themoviedbapp.presentation.commons.SearchLayout
+        android:id="@+id/sSearch"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp50"
-        android:text="@string/title_dashboard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/iSectionSearch"
-        layout="@layout/layout_dashboard_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
-
-    <include
-        android:id="@+id/iSectionCategories"
-        layout="@layout/layout_dashboard_categories"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp22"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iSectionSearch" />
-
     <com.marturelo.themoviedbapp.presentation.commons.StatefulLayout
-        android:id="@+id/slDashboard"
+        android:id="@+id/slSearch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iSectionCategories">
+        app:layout_constraintTop_toBottomOf="@id/sSearch">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/srlDashboard"
+            android:id="@+id/srlSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvDashboard"
+                android:id="@+id/rvSearch"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingTop="@dimen/dp8"

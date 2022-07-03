@@ -1,22 +1,20 @@
-package com.marturelo.themoviedbapp.presentation.dashboard
+package com.marturelo.themoviedbapp.presentation.search
 
 import androidx.annotation.VisibleForTesting
-import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import com.marturelo.themoviedbapp.domain.entity.SourceResultEntity
-import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
+import com.marturelo.themoviedbapp.domain.usecase.SearchMoviesUseCase
 import com.marturelo.themoviedbapp.presentation.commons.StatefulLayout
 import com.marturelo.themoviedbapp.presentation.core.AbstractPresenter
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
-import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.toVO
+import com.marturelo.themoviedbapp.presentation.search.vo.PayloadVO
 import javax.inject.Inject
 
-class DashboardPresenter @Inject constructor(
-    private val discoveryMoviesUseCase: DiscoveryMoviesUseCase
-) : AbstractPresenter<DashboardContract.View>(),
-    DashboardContract.Presenter {
-
+class SearchPresenter @Inject constructor(
+    private val searchMoviesUseCase: SearchMoviesUseCase
+) : AbstractPresenter<SearchContract.View>(),
+    SearchContract.Presenter {
     private var internalPayLoad: PayloadVO? = null
         set(value) {
             field = value
@@ -27,15 +25,19 @@ class DashboardPresenter @Inject constructor(
         get() = internalPayLoad
 
     @Inject
-    lateinit var navigator: DashboardContract.Navigator
+    lateinit var navigator: SearchContract.Navigator
 
     override fun init() {
-        internalPayLoad = PayloadVO(discovery = Constants.DISCOVERY.POPULAR)
+        internalPayLoad = PayloadVO(query = "")
         populate()
     }
 
     override fun restoreFromPayload(payload: PayloadVO) {
         internalPayLoad = payload
+    }
+
+    override fun onBackClicked() {
+
     }
 
     override fun restore() {
@@ -46,16 +48,17 @@ class DashboardPresenter @Inject constructor(
         navigator.navigateToDetails(it)
     }
 
-    override fun onSearchClicked() {
-        navigator.navigateToSearch()
+    override fun onQueryChanged(query: String) {
+        internalPayLoad = payload?.copy(query = query)
+        populate()
     }
 
     override fun populate() {
         internalPayLoad?.run {
             internalPayLoad =
-                copy(contentState = if (items.isEmpty()) DashboardState.LOADING else contentState)
-            discoveryMoviesUseCase.execute(
-                DiscoveryMoviesUseCase.Params(discovery),
+                copy(contentState = if (items.isEmpty()) SearchState.LOADING else contentState)
+            searchMoviesUseCase.execute(
+                SearchMoviesUseCase.Params(query),
                 ::onResult,
                 ::onError
             )
@@ -71,7 +74,7 @@ class DashboardPresenter @Inject constructor(
         }
 
         internalPayLoad = internalPayLoad?.copy(
-            contentState = DashboardState.CONTENT,
+            contentState = SearchState.CONTENT,
             items = result.result.map { it.toVO() })
     }
 
@@ -80,7 +83,7 @@ class DashboardPresenter @Inject constructor(
         requireNotNull(payload)
 
         internalPayLoad = internalPayLoad?.copy(
-            contentState = if (internalPayLoad?.items?.isEmpty() == true) DashboardState.ERROR else DashboardState.CONTENT,
+            contentState = if (internalPayLoad?.items?.isEmpty() == true) SearchState.ERROR else SearchState.CONTENT,
         )
 
         if (internalPayLoad?.items?.isNotEmpty() == true) {
@@ -92,14 +95,14 @@ class DashboardPresenter @Inject constructor(
     fun notifyDataChange() {
         payload?.run {
             when (contentState) {
-                DashboardState.CONTENT -> {
+                SearchState.CONTENT -> {
                     view?.showContentState()
                     view?.updateUI(this)
                 }
-                DashboardState.LOADING -> {
+                SearchState.LOADING -> {
                     view?.showLoadingState()
                 }
-                DashboardState.ERROR -> {
+                SearchState.ERROR -> {
                     view?.showErrorState()
                 }
                 else -> {
@@ -110,11 +113,11 @@ class DashboardPresenter @Inject constructor(
 
     override fun detachView() {
         super.detachView()
-        discoveryMoviesUseCase.stop()
+        searchMoviesUseCase.stop()
     }
 }
 
-object DashboardState {
+object SearchState {
     const val CONTENT = StatefulLayout.State.CONTENT
     const val ERROR = "STATE_ERROR"
     const val LOADING = "STATE_LOADING"

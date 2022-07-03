@@ -1,10 +1,10 @@
-package com.marturelo.themoviedbapp.presentation.dashboard
+package com.marturelo.themoviedbapp.presentation.search
 
 import com.marturelo.themoviedbapp.presentation.core.MVPContract
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
-import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
+import com.marturelo.themoviedbapp.presentation.search.vo.PayloadVO
 
-interface DashboardContract {
+interface SearchContract {
     interface View : MVPContract.BaseView {
         fun updateUI(payload: PayloadVO)
         fun showLoadingState()
@@ -17,15 +17,15 @@ interface DashboardContract {
         val payload: PayloadVO?
         fun init()
         fun restoreFromPayload(payload: PayloadVO)
+        fun onBackClicked()
         fun restore()
         fun populate()
         fun onItemClicked(it: MovieVO)
-        fun onSearchClicked()
+        fun onQueryChanged(query: String)
     }
 
     interface Navigator {
-        fun onClose()
+        fun navigateToBack()
         fun navigateToDetails(movie: MovieVO)
-        fun navigateToSearch()
     }
 }

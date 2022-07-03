@@ -12,11 +12,11 @@ interface Constants {
         const val ISO_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         const val API_CONNECTION_TIMEOUT = 5L
 
-        const val MOVIE_PATH =
-            "movie/"
-        const val POPULAR_PATH = "popular/"
-        const val TOP_RATED_PATH = "top_rated/"
+        const val MOVIE_PATH = "movie/"
+        const val SEARCH_PATH = "search/movie"
         const val DISCOVERY = "discovery"
+        const val API_KEY_PARAM = "api_key"
+        const val QUERY_PARAM = "query"
         const val DISCOVERY_PATH = "{$DISCOVERY}"
     }
 

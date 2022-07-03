@@ -5,4 +5,5 @@ import io.reactivex.Single
 
 interface TMDBDataSource {
     fun discover(discovery: String): Single<List<MovieModel>>
+    fun search(query: String): Single<List<MovieModel>>
 }

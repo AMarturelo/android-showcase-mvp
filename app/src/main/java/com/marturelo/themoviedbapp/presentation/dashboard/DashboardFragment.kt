@@ -1,10 +1,11 @@
 package com.marturelo.themoviedbapp.presentation.dashboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.Lifecycle
 import com.marturelo.themoviedbapp.R
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.ext.setDividerVertical
@@ -12,9 +13,12 @@ import com.marturelo.themoviedbapp.presentation.commons.StatefulLayout
 import com.marturelo.themoviedbapp.presentation.core.BaseDaggerMVPFragment
 import com.marturelo.themoviedbapp.presentation.dashboard.adapter.DashboardController
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
+import io.reactivex.android.schedulers.AndroidSchedulers
+import java.util.concurrent.TimeUnit
+import kotlinx.android.synthetic.main.fragment_dashboard.rvDashboard
 import kotlinx.android.synthetic.main.fragment_dashboard.slDashboard
 import kotlinx.android.synthetic.main.fragment_dashboard.srlDashboard
-import kotlinx.android.synthetic.main.fragment_dashboard.rvDashboard
+import kotlinx.android.synthetic.main.layout_dashboard_search.tvSearch
 
 class DashboardFragment :
     BaseDaggerMVPFragment<DashboardContract.View, DashboardContract.Presenter>(),
@@ -30,6 +34,7 @@ class DashboardFragment :
 
         setupRecyclerView()
         setupStatefulLayout()
+        setupSearchView()
 
         if (presenter.payload != null) {
             presenter.restore()
@@ -52,6 +57,13 @@ class DashboardFragment :
             presenter.restoreFromPayload(payload)
         } else {
             presenter.init()
+        }
+    }
+
+    @SuppressLint("CheckResult")
+    private fun setupSearchView() {
+        tvSearch.setOnClickListener {
+            presenter.onSearchClicked()
         }
     }
 
@@ -110,8 +122,3 @@ class DashboardFragment :
     }
 }
 
-object DashboardState {
-    const val CONTENT = StatefulLayout.State.CONTENT
-    const val ERROR = "STATE_ERROR"
-    const val LOADING = "STATE_LOADING"
-}

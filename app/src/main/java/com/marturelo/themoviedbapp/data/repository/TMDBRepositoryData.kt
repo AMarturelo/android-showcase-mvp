@@ -17,7 +17,9 @@ class TMDBRepositoryData @Inject constructor(
     @Named(Constants.DI.TMBD_DS_REMOTE) val remote: TMDBDataSource, val movieDao: MovieDao
 ) :
     TMDBRepository {
-    override fun discovery(@DiscoveryDescriptor discovery: String): Observable<SourceResultEntity<List<MovieEntity>>> {
+    override fun discovery(
+        @DiscoveryDescriptor discovery: String
+    ): Observable<SourceResultEntity<List<MovieEntity>>> {
         val remote = remote.discover(discovery).doOnSuccess {
             movieDao.insertAll(it)
         }.map { result ->
@@ -36,6 +38,46 @@ class TMDBRepositoryData @Inject constructor(
         }
 
         val local = movieDao.discovery()
+
+        return remote.toObservable().zipWith(local, BiFunction { remoteResult, localResult ->
+            if (remoteResult.isError() && localResult.isEmpty()) {
+                throw remoteResult.error!!
+            }
+            return@BiFunction remoteResult.copy(
+                result = localResult.map { it.toEntity() },
+                dataSource = if (remoteResult.networkStatus == Constants.NetworkStatus.NETWORK_STATUS_SUCCESS) Constants.DataSource.REMOTE else Constants.DataSource.LOCAL,
+            )
+        })
+    }
+
+    override fun search(query: String): Observable<SourceResultEntity<List<MovieEntity>>> {
+        if (query.isEmpty()) {
+            return movieDao.getAll().map { result ->
+                SourceResultEntity(
+                    result = result.map { it.toEntity() },
+                    dataSource = Constants.DataSource.LOCAL,
+                    networkStatus = Constants.NetworkStatus.NETWORK_STATUS_PURE
+                )
+            }
+        }
+        val remote = remote.search(query).doOnSuccess {
+            movieDao.insertAll(it)
+        }.map { result ->
+            SourceResultEntity(
+                result = result.map { it.toEntity() },
+                dataSource = Constants.DataSource.REMOTE,
+                networkStatus = Constants.NetworkStatus.NETWORK_STATUS_SUCCESS
+            )
+        }.onErrorReturn {
+            SourceResultEntity(
+                result = listOf(),
+                error = it,
+                dataSource = Constants.DataSource.REMOTE,
+                networkStatus = Constants.NetworkStatus.NETWORK_STATUS_ERROR
+            )
+        }
+
+        val local = movieDao.search(query)
 
         return remote.toObservable().zipWith(local, BiFunction { remoteResult, localResult ->
             if (remoteResult.isError() && localResult.isEmpty()) {
