@@ -37,6 +37,10 @@ class DashboardPresenter @Inject constructor(
         internalPayLoad = payload
     }
 
+    override fun restore() {
+        notifyDataChange()
+    }
+
     override fun onItemClicked(it: MovieVO) {
         navigator.navigateToDetails(it)
     }

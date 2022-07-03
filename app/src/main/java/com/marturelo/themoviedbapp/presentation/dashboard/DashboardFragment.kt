@@ -31,7 +31,11 @@ class DashboardFragment :
         setupRecyclerView()
         setupStatefulLayout()
 
-        restoreStateOrInit(savedInstanceState)
+        if (presenter.payload != null) {
+            presenter.restore()
+        } else {
+            restoreStateOrInit(savedInstanceState)
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -39,11 +43,6 @@ class DashboardFragment :
             outState.putParcelable(Constants.InstanceState.DASHBOARD, this)
         }
         super.onSaveInstanceState(outState)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        //presenter.saveInstance(rvAutorizarOperacion.layoutManager?.onSaveInstanceState())
     }
 
     private fun restoreStateOrInit(savedInstanceState: Bundle? = null) {

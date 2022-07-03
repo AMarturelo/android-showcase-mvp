@@ -4,4 +4,5 @@
     <string name="title_section_search">Find your movies</string>
     <string name="title_section_categories">Categories</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_back">Back</string>
 </resources>

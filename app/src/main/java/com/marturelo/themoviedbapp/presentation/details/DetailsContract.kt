@@ -14,12 +14,13 @@ interface DetailsContract {
 
     interface Presenter : MVPContract.BasePresenter<View?> {
         val payload: PayloadVO?
-        fun init()
+        fun initWithPayload(payload: PayloadVO)
         fun restoreFromPayload(payload: PayloadVO)
-        fun populate()
+        fun onBackClicked()
+        fun restore()
     }
 
     interface Navigator {
-        fun onClose()
+        fun navigateToBack()
     }
 }

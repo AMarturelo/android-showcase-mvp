@@ -21,19 +21,26 @@ class DetailsPresenter @Inject constructor(
     @Inject
     lateinit var navigator: DetailsContract.Navigator
 
-    override fun init() {
+    override fun initWithPayload(payload: PayloadVO) {
+        internalPayLoad = payload
     }
 
     override fun restoreFromPayload(payload: PayloadVO) {
+        internalPayLoad = payload
     }
 
-    override fun populate() {
+    override fun restore() {
+        notifyDataChange()
+    }
+
+    override fun onBackClicked() {
+        navigator.navigateToBack()
     }
 
     @VisibleForTesting
     fun notifyDataChange() {
         payload?.run {
-
+            view?.updateUI(this)
         }
     }
 }

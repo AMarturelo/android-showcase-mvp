@@ -19,6 +19,7 @@ interface DashboardContract {
         fun restoreFromPayload(payload: PayloadVO)
         fun populate()
         fun onItemClicked(it: MovieVO)
+        fun restore()
     }
 
     interface Navigator {

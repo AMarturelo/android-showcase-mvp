@@ -26,6 +26,7 @@ interface Constants {
 
     object InstanceState {
         const val DASHBOARD = "dashboard_saved_instance"
+        const val DETAILS = "details_saved_instance"
     }
 
     object DISCOVERY {
