@@ -20,7 +20,9 @@ class TMDBRepositoryData @Inject constructor(
     override fun discovery(
         @DiscoveryDescriptor discovery: String
     ): Observable<SourceResultEntity<List<MovieEntity>>> {
-        val remote = remote.discover(discovery).doOnSuccess {
+        val remote = remote.discover(discovery).map { list ->
+            list.map { it.copy(discovery = discovery) }
+        }.doOnSuccess {
             movieDao.insertAll(it)
         }.map { result ->
             SourceResultEntity(
@@ -37,7 +39,7 @@ class TMDBRepositoryData @Inject constructor(
             )
         }
 
-        val local = movieDao.discovery()
+        val local = movieDao.discovery(discovery)
 
         return remote.toObservable().zipWith(local, BiFunction { remoteResult, localResult ->
             if (remoteResult.isError() && localResult.isEmpty()) {

@@ -14,8 +14,8 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(movies: List<MovieModel>)
 
-    @Query("SELECT * FROM movies")
-    fun discovery(): Observable<List<MovieModel>>
+    @Query("SELECT * FROM movies WHERE discovery == :discovery ")
+    fun discovery(discovery: String): Observable<List<MovieModel>>
 
     @Query("SELECT * FROM movies WHERE title LIKE '%' || :query || '%'")
     fun search(query: String): Observable<List<MovieModel>>

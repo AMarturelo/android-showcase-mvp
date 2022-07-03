@@ -1,5 +1,7 @@
 package com.marturelo.themoviedbapp.commons.utils
 
+import com.marturelo.themoviedbapp.presentation.dashboard.vo.DiscoveryVO
+
 interface Constants {
     object DI {
         const val TMBD_DS_REMOTE = "TMBD_DS_REMOTE"
@@ -37,6 +39,11 @@ interface Constants {
     object DISCOVERY {
         const val POPULAR = "popular"
         const val TOP_RARED = "top_rated"
+
+        val discoveries = listOf(
+            DiscoveryVO(TOP_RARED, "Top rated"),
+            DiscoveryVO(POPULAR, "Popular")
+        )
     }
 
     object NetworkStatus {

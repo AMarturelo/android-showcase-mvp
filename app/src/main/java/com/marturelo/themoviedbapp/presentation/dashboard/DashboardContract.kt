@@ -21,6 +21,7 @@ interface DashboardContract {
         fun populate()
         fun onItemClicked(it: MovieVO)
         fun onSearchClicked()
+        fun onDiscoverySelected(index: Int)
     }
 
     interface Navigator {

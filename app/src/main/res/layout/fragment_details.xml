@@ -41,7 +41,7 @@
 
     <Button
         android:id="@+id/btBack"
-        style="@style/ButtonAppearance.Primary"
+        style="@style/ButtonAppearance.Icon"
         android:layout_width="wrap_content"
         android:layout_height="42dp"
         android:layout_marginStart="@dimen/dp30"

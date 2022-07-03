@@ -46,6 +46,12 @@ class DashboardPresenter @Inject constructor(
         navigator.navigateToDetails(it)
     }
 
+    override fun onDiscoverySelected(index: Int) {
+        internalPayLoad =
+            payload?.copy(discovery = Constants.DISCOVERY.discoveries[index].discovery)
+        populate()
+    }
+
     override fun onSearchClicked() {
         navigator.navigateToSearch()
     }

@@ -1,6 +1,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/primary_rounded_button_enable" android:state_enabled="true" />
-    <item android:drawable="@drawable/primary_rounded_button_checked" android:state_selected="true" />
+    <item android:drawable="@drawable/primary_rounded_button_checked" android:state_enabled="true" android:state_selected="true" />
     <!-- default state-->
     <item android:drawable="@drawable/primary_rounded_button_enable" />
 </selector>
