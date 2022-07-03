@@ -34,6 +34,9 @@
     <dimen name="dp145">145dp</dimen>
     <dimen name="dp210">210dp</dimen>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+    </style>
+
     <style name="TextAppearance.BigTitle" parent="android:TextAppearance">
         <item name="android:textSize">@dimen/sp36</item>
         <item name="fontFamily">@font/poppins_bold</item>

@@ -2,6 +2,7 @@ package com.marturelo.themoviedbapp.presentation.dashboard
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -35,15 +36,20 @@ class DashboardNavigator @Inject constructor(
                     extras
                 )
         }
-
-
     }
 
     override fun navigateToSearch() {
-        val action = DashboardFragmentDirections.actionDashboardFragmentToSearchFragment()
-        NavHostFragment.findNavController(fragment)
-            .navigate(
-                action,
+        fragment.view?.findViewById<View>(R.id.tvSearch)?.run {
+            val extras = FragmentNavigatorExtras(
+                this to Constants.Hero.SEARCH_VIEW,
             )
+
+            val action = DashboardFragmentDirections.actionDashboardFragmentToSearchFragment()
+            NavHostFragment.findNavController(fragment)
+                .navigate(
+                    action,
+                    extras
+                )
+        }
     }
 }

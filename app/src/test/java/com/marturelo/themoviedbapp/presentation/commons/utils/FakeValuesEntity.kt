@@ -12,7 +12,6 @@ object FakeValuesEntity {
             true,
             45.1,
             1,
-            "Fake",
         )
     }
 

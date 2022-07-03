@@ -36,10 +36,6 @@ class SearchPresenter @Inject constructor(
         internalPayLoad = payload
     }
 
-    override fun onBackClicked() {
-
-    }
-
     override fun restore() {
         notifyDataChange()
     }
@@ -51,6 +47,10 @@ class SearchPresenter @Inject constructor(
     override fun onQueryChanged(query: String) {
         internalPayLoad = payload?.copy(query = query)
         populate()
+    }
+
+    override fun onFocusLost() {
+        navigator.navigateToBack()
     }
 
     override fun populate() {

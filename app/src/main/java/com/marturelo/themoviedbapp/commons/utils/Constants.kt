@@ -24,8 +24,13 @@ interface Constants {
         const val MOVIE = "movie"
     }
 
+    object Hero {
+        const val SEARCH_VIEW = "search_view"
+    }
+
     object InstanceState {
         const val DASHBOARD = "dashboard_saved_instance"
+        const val SEARCH = "search_saved_instance"
         const val DETAILS = "details_saved_instance"
     }
 

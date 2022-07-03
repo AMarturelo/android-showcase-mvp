@@ -9,10 +9,12 @@
     android:paddingTop="16dp"
     tools:context=".presentation.search.SearchFragment">
 
-    <com.marturelo.themoviedbapp.presentation.commons.SearchLayout
-        android:id="@+id/sSearch"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/primary_rounded_button_enable"
+        app:queryBackground="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sSearch">
+        app:layout_constraintTop_toBottomOf="@id/svSearch">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/srlSearch"

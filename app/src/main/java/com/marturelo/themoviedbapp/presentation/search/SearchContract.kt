@@ -17,11 +17,11 @@ interface SearchContract {
         val payload: PayloadVO?
         fun init()
         fun restoreFromPayload(payload: PayloadVO)
-        fun onBackClicked()
         fun restore()
         fun populate()
         fun onItemClicked(it: MovieVO)
         fun onQueryChanged(query: String)
+        fun onFocusLost()
     }
 
     interface Navigator {

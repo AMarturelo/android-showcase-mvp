@@ -9,6 +9,6 @@ import kotlinx.android.parcel.Parcelize
 data class PayloadVO(
     val items: List<MovieVO> = emptyList(),
     val contentState: String = DashboardState.CONTENT,
-    val query: String
+    val query: String = ""
 ) :
     Parcelable

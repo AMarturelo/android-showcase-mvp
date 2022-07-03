@@ -14,6 +14,7 @@ import com.marturelo.themoviedbapp.ext.releasedDate
 import com.marturelo.themoviedbapp.presentation.core.BaseDaggerMVPFragment
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 import com.marturelo.themoviedbapp.presentation.details.vo.PayloadVO
+import java.nio.file.Files.move
 import kotlinx.android.synthetic.main.fragment_details.btBack
 import kotlinx.android.synthetic.main.fragment_details.ivBackdrop
 import kotlinx.android.synthetic.main.fragment_details.ivPoster
@@ -32,6 +33,8 @@ class DetailsFragment :
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition =
             TransitionInflater.from(context).inflateTransition(R.transition.change_bounds)
+        sharedElementReturnTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
