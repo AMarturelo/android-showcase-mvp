@@ -1,10 +1,9 @@
 package com.marturelo.themoviedbapp.presentation.core
 
 interface MVPContract {
-    interface BasePresenter<V : BaseView> {
-        fun bindView(view: V)
-        fun unbindView()
-        fun getView(): V?
+    interface BasePresenter<in V: BaseView?> {
+        fun attachView(view: V?)
+        fun detachView()
     }
 
     interface BaseView

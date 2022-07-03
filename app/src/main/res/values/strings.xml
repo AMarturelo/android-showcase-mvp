@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">TheMovieDBApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_dashboard">Movie DB App</string>
+    <string name="title_section_search">Find your movies</string>
+    <string name="title_section_categories">Categories</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

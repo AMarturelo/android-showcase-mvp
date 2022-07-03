@@ -71,4 +71,12 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.4.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.2.1")
 
+    //epoxy
+    implementation("com.airbnb.android:epoxy:4.1.0")
+    kapt("com.airbnb.android:epoxy-processor:4.1.0")
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.13.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.13.2")
+
 }

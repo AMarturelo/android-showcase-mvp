@@ -10,7 +10,7 @@ import com.marturelo.themoviedbapp.presentation.core.MVPContract.BaseView
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-abstract class BaseDaggerMVPFragment<T : BasePresenter<*>> : DaggerFragment(), BaseView {
+abstract class BaseDaggerMVPFragment<in V : BaseView?, T : BasePresenter<V?>> : DaggerFragment(), BaseView {
     @Inject
     lateinit var presenter: T
 
@@ -18,11 +18,15 @@ abstract class BaseDaggerMVPFragment<T : BasePresenter<*>> : DaggerFragment(), B
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(layout, container, false)
+        val view = inflater.inflate(layout, container, false)
+
+        presenter.attachView(this as V)
+        super.onCreateView(inflater, container, savedInstanceState)
+        return view
     }
 
     override fun onDestroy() {
-        presenter.unbindView()
+        presenter.detachView()
         super.onDestroy()
     }
 

@@ -16,5 +16,16 @@ interface Constants {
             "movie/"
         const val POPULAR_PATH = "popular/"
         const val TOP_RATED_PATH = "top_rated/"
+        const val DISCOVERY = "discovery"
+        const val DISCOVERY_PATH = "{$DISCOVERY}"
+    }
+
+    object InstanceState{
+        const val DASHBOARD = "dashboard_saved_instance"
+    }
+
+    object DISCOVERY{
+        const val POPULAR = "popular"
+        const val TOP_RARED = "top_rated"
     }
 }

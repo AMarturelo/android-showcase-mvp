@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pink_700">#C2185B</color>
+    <color name="purple_100">#E1BEE7</color>
+    <color name="purple_500">#9C27B0</color>
+    <color name="purple_600">#8E24AA</color>
+    <color name="purple_700">#673AB7</color>
+
+    <color name="tmdb_gray_black">#242A32</color>
+    <color name="tmdb_gray_middle">#3A3F47</color>
+    <color name="tmdb_green">#4FCCA3</color>
+    <color name="tmdb_gray_200">#EEEEEE</color>
+    <color name="tmdb_white">#FFFFFF</color>
+
+    <color name="layout_background">@color/tmdb_gray_black</color>
+
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="sp18">18sp</dimen>
+    <dimen name="sp36">36sp</dimen>
+
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp18">18dp</dimen>
+    <dimen name="dp22">22dp</dimen>
+    <dimen name="dp24">24dp</dimen>
+    <dimen name="dp29">29dp</dimen>
+    <dimen name="dp30">30dp</dimen>
+    <dimen name="dp50">50dp</dimen>
+    <dimen name="dp95">95dp</dimen>
+    <dimen name="dp120">120dp</dimen>
+
+    <style name="TextAppearance.BigTitle" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp36</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+    </style>
+
+    <style name="TextAppearance.SectionTitle" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp18</item>
+        <item name="fontFamily">@font/poppins_semi_bold</item>
+    </style>
+
+    <style name="TextAppearance.RegularText" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="TextAppearance.MediumText" parent="android:TextAppearance">
+        <item name="android:textSize">@dimen/sp12</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="TextAppearance.BigTitle.White">
+        <item name="android:textColor">@color/tmdb_white</item>
+    </style>
+
+    <style name="TextAppearance.SectionTitle.White">
+        <item name="android:textColor">@color/tmdb_white</item>
+    </style>
+
+    <style name="TextAppearance.RegularText.White">
+        <item name="android:textColor">@color/tmdb_white</item>
+    </style>
+
+    <style name="TextAppearance.MediumText.White">
+        <item name="android:textColor">@color/tmdb_white</item>
+    </style>
+</resources>

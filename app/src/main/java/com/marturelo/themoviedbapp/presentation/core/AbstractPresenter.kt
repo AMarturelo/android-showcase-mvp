@@ -4,17 +4,16 @@ import com.marturelo.themoviedbapp.presentation.core.MVPContract.BaseView
 import com.marturelo.themoviedbapp.presentation.core.MVPContract.BasePresenter
 import java.lang.ref.WeakReference
 
-abstract class AbstractPresenter<V : BaseView> : BasePresenter<V> {
-    var view: WeakReference<V>? = null
-    override fun bindView(view: V) {
-        this.view = WeakReference(view)
+abstract class AbstractPresenter<V : BaseView?> : BasePresenter<V?> {
+    private var mView: WeakReference<V>? = null
+    val view: V?
+        get() = mView?.get()
+
+    override fun attachView(view: V?) {
+        mView = WeakReference<V>(view)
     }
 
-    override fun unbindView() {
-        view = null
-    }
-
-    override fun getView(): V? {
-        return view?.get()
+    override fun detachView() {
+        mView = null
     }
 }

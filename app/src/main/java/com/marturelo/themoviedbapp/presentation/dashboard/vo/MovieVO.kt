@@ -1,9 +1,12 @@
-package com.marturelo.themoviedbapp.data.model
+package com.marturelo.themoviedbapp.presentation.dashboard.vo
 
+import android.os.Parcelable
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import java.util.*
+import kotlinx.android.parcel.Parcelize
 
-data class MovieModel(
+@Parcelize
+data class MovieVO(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
@@ -17,12 +20,16 @@ data class MovieModel(
     val title: String,
     val video: Boolean,
     val vote_average: Double,
-    val vote_count: Int,
-    val source: String? = ""
-)
+    val vote_count: Int
+) : Parcelable {
+    val posterUrl: String
+        get() {
+            return "https://image.tmdb.org/t/p/w600_and_h900_bestv2/$poster_path"
+        }
+}
 
-fun MovieModel.toEntity(): MovieEntity {
-    return MovieEntity(
+fun MovieEntity.toVO(): MovieVO {
+    return MovieVO(
         adult,
         backdrop_path,
         genre_ids,
@@ -36,7 +43,6 @@ fun MovieModel.toEntity(): MovieEntity {
         title,
         video,
         vote_average,
-        vote_count,
-        source?:""
+        vote_count
     )
 }

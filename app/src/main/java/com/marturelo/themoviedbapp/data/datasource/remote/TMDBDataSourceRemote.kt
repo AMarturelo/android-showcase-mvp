@@ -12,11 +12,7 @@ class TMDBDataSourceRemote @Inject constructor(
     @Named(Constants.DI.API_KEY) val apiKey: String,
     private val api: TMDBApi
 ) : TMDBDataSource {
-    override fun popularMovies(): Single<List<MovieModel>> {
-        return api.popularMovies(apiKey)
-    }
-
-    override fun topRatedMovies(): Single<List<MovieModel>> {
-        return api.topRatedMovies(apiKey)
+    override fun discover(discovery: String): Single<List<MovieModel>> {
+        return api.discoveryMovies(discovery, apiKey).map { it.results }
     }
 }

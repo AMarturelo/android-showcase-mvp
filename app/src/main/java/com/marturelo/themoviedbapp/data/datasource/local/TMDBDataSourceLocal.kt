@@ -5,12 +5,8 @@ import com.marturelo.themoviedbapp.data.model.MovieModel
 import io.reactivex.Single
 import javax.inject.Inject
 
-class TMDBDataSourceLocal @Inject constructor(): TMDBDataSource {
-    override fun popularMovies(): Single<List<MovieModel>> {
-        TODO("Not yet implemented")
-    }
-
-    override fun topRatedMovies(): Single<List<MovieModel>> {
+class TMDBDataSourceLocal @Inject constructor() : TMDBDataSource {
+    override fun discover(discovery: String): Single<List<MovieModel>> {
         TODO("Not yet implemented")
     }
 }
