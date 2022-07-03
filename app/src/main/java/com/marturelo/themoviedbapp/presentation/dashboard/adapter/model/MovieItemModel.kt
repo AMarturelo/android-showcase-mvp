@@ -41,6 +41,9 @@ abstract class MovieItemModel : EpoxyModelWithHolder<MovieItemModel.Holder>() {
         holder.root.setOnClickListener {
             itemClickedListener(item)
         }
+
+        holder.ivMovieCover.transitionName = "cover${item.id}"
+        holder.tvMovieTitle.transitionName = "title${item.id}"
     }
 
     class Holder : EpoxyHolder() {

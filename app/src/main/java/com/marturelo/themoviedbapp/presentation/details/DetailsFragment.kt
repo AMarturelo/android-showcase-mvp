@@ -2,6 +2,8 @@ package com.marturelo.themoviedbapp.presentation.details
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.FragmentTransaction
+import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -26,6 +28,11 @@ class DetailsFragment :
     override val layout: Int
         get() = R.layout.fragment_details
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(R.transition.change_bounds)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,6 +43,15 @@ class DetailsFragment :
             presenter.restore()
         } else {
             restoreStateOrInit(savedInstanceState)
+        }
+
+        setupHero()
+    }
+
+    private fun setupHero() {
+        presenter.payload?.run {
+            ivPoster.transitionName = "cover${movie.id}"
+            tvMovieTitle.transitionName = "title${movie.id}"
         }
     }
 

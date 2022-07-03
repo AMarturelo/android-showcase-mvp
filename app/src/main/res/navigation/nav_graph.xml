@@ -9,7 +9,7 @@
         android:id="@+id/dashboardFragment"
         android:name="com.marturelo.themoviedbapp.presentation.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_dashboardFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -18,6 +18,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.marturelo.themoviedbapp.presentation.details.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="movie"
+            app:argType="com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO" />
     </fragment>
 </navigation>

@@ -3,6 +3,7 @@ package com.marturelo.themoviedbapp.presentation.dashboard
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.marturelo.themoviedbapp.R
 import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.ext.setDividerVertical
@@ -12,7 +13,7 @@ import com.marturelo.themoviedbapp.presentation.dashboard.adapter.DashboardContr
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
 import kotlinx.android.synthetic.main.fragment_dashboard.slDashboard
 import kotlinx.android.synthetic.main.fragment_dashboard.srlDashboard
-import kotlinx.android.synthetic.main.fragment_dashboard.tvDashboard
+import kotlinx.android.synthetic.main.fragment_dashboard.rvDashboard
 
 class DashboardFragment :
     BaseDaggerMVPFragment<DashboardContract.View, DashboardContract.Presenter>(),
@@ -21,9 +22,7 @@ class DashboardFragment :
     override val layout: Int
         get() = R.layout.fragment_dashboard
 
-    private val controller = DashboardController(itemClickedListener = {
-        presenter.onItemClicked(it)
-    })
+    lateinit var controller: DashboardController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,8 +55,14 @@ class DashboardFragment :
     }
 
     private fun setupRecyclerView() {
-        tvDashboard.adapter = controller.adapter
-        tvDashboard.setDividerVertical(R.drawable.list_divider)
+        controller = DashboardController(
+            itemClickedListener = {
+                presenter.onItemClicked(it)
+            },
+            rvDashboard
+        )
+        rvDashboard.adapter = controller.adapter
+        rvDashboard.setDividerVertical(R.drawable.list_divider)
 
         srlDashboard.setOnRefreshListener {
             presenter.populate()

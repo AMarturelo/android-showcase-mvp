@@ -8,6 +8,6 @@ class DetailsNavigator @Inject constructor(
 ) :
     DetailsContract.Navigator {
     override fun navigateToBack() {
-        NavHostFragment.findNavController(fragment).popBackStack()
+        NavHostFragment.findNavController(fragment).navigateUp()
     }
 }
