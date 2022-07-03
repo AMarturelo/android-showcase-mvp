@@ -5,6 +5,7 @@ import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
 import com.marturelo.themoviedbapp.presentation.core.AbstractPresenter
+import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.toVO
 import javax.inject.Inject
@@ -34,6 +35,10 @@ class DashboardPresenter @Inject constructor(
 
     override fun restoreFromPayload(payload: PayloadVO) {
         internalPayLoad = payload
+    }
+
+    override fun onItemClicked(it: MovieVO) {
+        navigator.navigateToDetails(it)
     }
 
     override fun populate() {

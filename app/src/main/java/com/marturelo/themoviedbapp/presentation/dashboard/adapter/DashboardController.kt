@@ -2,9 +2,10 @@ package com.marturelo.themoviedbapp.presentation.dashboard.adapter
 
 import com.airbnb.epoxy.TypedEpoxyController
 import com.marturelo.themoviedbapp.presentation.dashboard.adapter.model.MovieItemModel_
+import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
 
-class DashboardController :
+class DashboardController(val itemClickedListener: (MovieVO) -> Unit = {}) :
     TypedEpoxyController<PayloadVO>() {
 
     override fun buildModels(data: PayloadVO) {
@@ -12,6 +13,7 @@ class DashboardController :
             MovieItemModel_()
                 .id(item.id)
                 .item(item)
+                .itemClickedListener(itemClickedListener)
                 .addTo(this)
         }
     }

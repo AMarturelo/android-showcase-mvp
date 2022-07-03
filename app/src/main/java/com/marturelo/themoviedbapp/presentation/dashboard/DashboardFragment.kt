@@ -21,7 +21,9 @@ class DashboardFragment :
     override val layout: Int
         get() = R.layout.fragment_dashboard
 
-    private val controller = DashboardController()
+    private val controller = DashboardController(itemClickedListener = {
+        presenter.onItemClicked(it)
+    })
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

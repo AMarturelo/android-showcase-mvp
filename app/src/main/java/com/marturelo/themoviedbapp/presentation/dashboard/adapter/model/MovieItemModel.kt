@@ -20,6 +20,9 @@ import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 abstract class MovieItemModel : EpoxyModelWithHolder<MovieItemModel.Holder>() {
 
     @EpoxyAttribute
+    var itemClickedListener: (MovieVO) -> Unit = {}
+
+    @EpoxyAttribute
     lateinit var item: MovieVO
 
     override fun getDefaultLayout(): Int = R.layout.layout_movie_item_model
@@ -29,18 +32,24 @@ abstract class MovieItemModel : EpoxyModelWithHolder<MovieItemModel.Holder>() {
         holder.tvMovieTitle.text = item.title
         holder.tvMovieReleaseDate.text = item.release_date.toString()
         holder.tvMovieAverageRating.text = item.vote_average.toString()
-        Glide.with(holder.ivMovieCover)
+        Glide.with(holder.root)
             .load(item.posterUrl)
             .transform(CenterCrop(), RoundedCorners(16.dp))
             .into(holder.ivMovieCover)
+
+        holder.root.setOnClickListener {
+            itemClickedListener(item)
+        }
     }
 
     class Holder : EpoxyHolder() {
+        lateinit var root: View
         lateinit var ivMovieCover: ImageView
         lateinit var tvMovieTitle: TextView
         lateinit var tvMovieReleaseDate: TextView
         lateinit var tvMovieAverageRating: TextView
         override fun bindView(itemView: View) {
+            root = itemView
             ivMovieCover = itemView.findViewById(R.id.ivMovieCover)
             tvMovieTitle = itemView.findViewById(R.id.tvMovieTitle)
             tvMovieReleaseDate = itemView.findViewById(R.id.tvMovieReleaseDate)

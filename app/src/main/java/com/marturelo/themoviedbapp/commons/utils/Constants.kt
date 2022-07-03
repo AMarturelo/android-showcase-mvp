@@ -20,11 +20,15 @@ interface Constants {
         const val DISCOVERY_PATH = "{$DISCOVERY}"
     }
 
-    object InstanceState{
+    object Arg {
+        const val MOVIE = "movie"
+    }
+
+    object InstanceState {
         const val DASHBOARD = "dashboard_saved_instance"
     }
 
-    object DISCOVERY{
+    object DISCOVERY {
         const val POPULAR = "popular"
         const val TOP_RARED = "top_rated"
     }

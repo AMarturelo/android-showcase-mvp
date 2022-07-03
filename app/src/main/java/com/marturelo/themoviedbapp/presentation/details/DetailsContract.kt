@@ -1,10 +1,9 @@
-package com.marturelo.themoviedbapp.presentation.dashboard
+package com.marturelo.themoviedbapp.presentation.details
 
 import com.marturelo.themoviedbapp.presentation.core.MVPContract
-import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
-import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
+import com.marturelo.themoviedbapp.presentation.details.vo.PayloadVO
 
-interface DashboardContract {
+interface DetailsContract {
     interface View : MVPContract.BaseView {
         fun updateUI(payload: PayloadVO)
         fun showLoadingState()
@@ -18,11 +17,9 @@ interface DashboardContract {
         fun init()
         fun restoreFromPayload(payload: PayloadVO)
         fun populate()
-        fun onItemClicked(it: MovieVO)
     }
 
     interface Navigator {
         fun onClose()
-        fun navigateToDetails(movie: MovieVO)
     }
 }

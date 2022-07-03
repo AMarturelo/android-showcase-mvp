@@ -4,6 +4,7 @@ import com.marturelo.themoviedbapp.commons.utils.Constants
 import com.marturelo.themoviedbapp.domain.entity.MovieEntity
 import com.marturelo.themoviedbapp.domain.usecase.DiscoveryMoviesUseCase
 import com.marturelo.themoviedbapp.presentation.dashboard.commons.utils.FakeValuesEntity
+import com.marturelo.themoviedbapp.presentation.dashboard.vo.MovieVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.PayloadVO
 import com.marturelo.themoviedbapp.presentation.dashboard.vo.toVO
 import com.nhaarman.mockitokotlin2.capture
@@ -155,6 +156,16 @@ class DashboardPresenterTest {
         verify { view.updateUI(any()) }
     }
 
+    @Test
+    fun given_presenter_whenOnItemClicked_then_VerifyCallbacks() {
+        val input = FakeValuesEntity.movie().toVO()
+        presenter.onItemClicked(input)
+
+        val movieArgument = slot<MovieVO>()
+
+        verify { navigator.navigateToDetails(capture(movieArgument)) }
+        Assert.assertEquals(input, movieArgument.captured)
+    }
 
     @Test
     fun given_presenter_whenOnClosePressed_then_verifyCallbacks() {
