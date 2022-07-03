@@ -169,6 +169,14 @@ class DashboardPresenterTest {
     }
 
     @Test
+    fun given_presenter_whenOnDiscoverySelected_then_VerifyCallbacks() {
+        presenter.init()
+        presenter.onDiscoverySelected(0)
+        verify { presenter.populate() }
+        Assert.assertEquals(presenter.payload?.discovery, Constants.DISCOVERY.discoveries[0].discovery)
+    }
+
+    @Test
     fun given_loading_whenNotifyDataChange_then_VerifyCallbacks() {
         every { presenter.payload } returns PayloadVO(
             contentState = DashboardState.LOADING,
