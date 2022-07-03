@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.details.DetailsFragment">
+
+    <ImageView
+        android:id="@+id/ivBackdrop"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp210"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="@dimen/dp95"
+        android:layout_height="@dimen/dp120"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp145"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBackdrop"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvMovieTitle"
+        style="@style/TextAppearance.SectionTitle.White"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="@dimen/dp12"
+        android:layout_marginEnd="@dimen/dp30"
+        android:maxLines="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivPoster"
+        app:layout_constraintTop_toBottomOf="@+id/ivBackdrop"
+        tools:text="Spiderman No Way Home" />
+
+    <Button
+        android:id="@+id/btBack"
+        style="@style/ButtonAppearance.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginBottom="@dimen/dp30"
+        android:drawableLeft="@drawable/dg_arrow_back"
+        android:paddingRight="13dp"
+        android:text="@string/button_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTitleOverviews"
+        style="@style/TextAppearance.MediumText.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp18"
+        android:text="@string/title_overviews"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPoster" />
+
+    <TextView
+        android:id="@+id/tvOverviews"
+        style="@style/TextAppearance.RegularText.White"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginEnd="@dimen/dp30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleOverviews"
+        tools:text="Button" />
+
+    <TextView
+        android:id="@+id/tvTitleReleaseDate"
+        style="@style/TextAppearance.MediumText.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp12"
+        android:text="@string/title_release_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOverviews" />
+
+    <TextView
+        android:id="@+id/tvMovieReleaseDate"
+        style="@style/TextAppearance.RegularText.White"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleReleaseDate"
+        tools:text="TextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

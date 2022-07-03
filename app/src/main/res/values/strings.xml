@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TheMovieDBApp</string>
+    <string name="title_dashboard">Movie DB App</string>
+    <string name="title_section_search">Find your movies</string>
+    <string name="title_section_categories">Categories</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_back">Back</string>
+    <string name="title_overviews">Overviews:</string>
+    <string name="title_release_date">Release Date:</string>
+    <string name="title_average_rating">Average Rating:</string>
+    <string name="hint_search">Search Here ...</string>
+</resources>

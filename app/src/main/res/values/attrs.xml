@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SegmentView">
+        <attr name="numberOfSegment" format="integer" />
+        <attr name="titlesOfSegment" format="string" />
+        <attr name="selectedTextColor" format="color" />
+        <attr name="unSelectedTextColor" format="color" />
+        <attr name="segmentColor" format="color" />
+        <attr name="textSize" format="dimension" />
+
+        <!--<attr name="orientation">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>-->
+    </declare-styleable>
+</resources>

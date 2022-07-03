@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <inset
+            android:insetLeft="13dp"
+            android:insetRight="8dp"
+            android:drawable="@drawable/ic_arrow_back_fill">
+        </inset>
+    </item>
+</layer-list>
