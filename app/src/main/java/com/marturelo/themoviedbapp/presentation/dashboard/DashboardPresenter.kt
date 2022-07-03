@@ -39,7 +39,7 @@ class DashboardPresenter @Inject constructor(
     override fun populate() {
         requireNotNull(internalPayLoad)
 
-        internalPayLoad = payload?.copy(contentState = DashboardState.LOADING)
+        internalPayLoad = internalPayLoad?.copy(contentState = DashboardState.LOADING)
         discoveryMoviesUseCase.execute(
             DiscoveryMoviesUseCase.Params(internalPayLoad!!.discovery),
             ::onResult,
@@ -58,13 +58,13 @@ class DashboardPresenter @Inject constructor(
 
     @VisibleForTesting
     fun onError(error: Throwable) {
-        requireNotNull(internalPayLoad)
+        requireNotNull(payload)
 
         internalPayLoad = internalPayLoad?.copy(
             contentState = if (internalPayLoad?.items?.isEmpty() == true) DashboardState.ERROR else DashboardState.CONTENT,
         )
 
-        if (internalPayLoad?.items?.isEmpty() == true) {
+        if (internalPayLoad?.items?.isNotEmpty() == true) {
             view?.showError(error)
         }
     }
@@ -72,7 +72,6 @@ class DashboardPresenter @Inject constructor(
     @VisibleForTesting
     fun notifyDataChange() {
         payload?.run {
-
             when (contentState) {
                 DashboardState.CONTENT -> {
                     view?.showContentState()
