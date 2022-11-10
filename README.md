@@ -13,22 +13,7 @@ Este repositorio es una ShowCase para el uso de MVP.
 ## Main technologies
 * Kotlin
 ## Installation
-- Clone this repository in your folder (git clone https://github.com/amarturelo/themoviedbapp.git)
+- Clone this repository in your folder (git clone git@github.com:Marturelo/android-showcase-mvp.git)
 - Open your project with Android Studio
 - Configure gradle archive and sync
 - Execute project with emulator or device
-
-## DONE
-* Dashboard
-* Filtrar entre populares o top rated
-* Detalles de una pelicula
-* Buscar peliculas
-* Manejo de cache de datos para trabajo offline
-
-## TODO
-* Mejorar las animacione de transicion entre fragmentos
-* Aumentar la cobertura del codigo
-* Agregar pruebas de interfaz
-* Agregar reproduccion para video
-  ** Nota: No se encontro un origen de datos. Pero en cualquier caso se utilizaria la previsualizacion de un resproductor externo o el ExoPlayer para embeber la resproduccion
-* Agregar bookmarks
